@@ -9,11 +9,15 @@ export class ResultsContainer extends Component {
   };
 
   componentDidMount() {
-    //*Do this once page loads, or MOUNTS
+    this.getRandomUser();
   }
 
-  RandomUser = (query) => {
-    API.search(query).then((res) => this.setState({ result: res.data.data }));
+  getRandomUser = async () => {
+    API.search().then((res) => {
+      console.log(res.data);
+
+      this.setState({ result: res });
+    });
   };
 
   handleInputChange = (event) => {
@@ -29,7 +33,7 @@ export class ResultsContainer extends Component {
     return (
       <div>
         <FilterSearch />
-        <EmployeeCard />
+        <EmployeeCard results={this.state.result} />
       </div>
     );
   }
