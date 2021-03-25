@@ -5,10 +5,16 @@ const EmployeeCard = (props) => {
     <div className="container">
       <div className="row">
         {props.results.map((result) => {
+          console.log(result.results[0].name.first);
           <div className="col-sm-3">
-            <div className="card listOfBeers" style={{ width: "325px" }}>
-              <img src="" className="card-img-top" />
-              <div className="card-body"></div>
+            <div className="card" style={{ width: "325px" }}>
+              <img
+                src={result.results[0].picture.thumbnail}
+                className="card-img-top"
+              />
+              <div className="card-body">
+                <h3>{result.results[0].name.first}</h3>
+              </div>
             </div>
           </div>;
         })}

@@ -9,14 +9,16 @@ export class ResultsContainer extends Component {
   };
 
   componentDidMount() {
-    this.getRandomUser();
+    for (let i = 0; i < 3; i++) {
+      this.getRandomUser();
+    }
   }
 
   getRandomUser = async () => {
     API.search().then((res) => {
-      console.log(res.data);
+      console.log(this.state.result);
 
-      this.setState({ result: res });
+      this.setState({ result: this.state.result.concat(res.data) });
     });
   };
 
