@@ -5,20 +5,22 @@ import FilterSearch from "./FilterSearch";
 
 export class ResultsContainer extends Component {
   state = {
+    //* Array which contains results from API calls
     result: [],
   };
 
   componentDidMount() {
-    for (let i = 0; i < 3; i++) {
-      this.getRandomUser();
-    }
+    // TODO find a better way to call API multiple times
+    // for (let i = 0; i < 10; i++) {
+    this.getRandomUser();
+    // }
   }
 
-  getRandomUser = async () => {
+  //TODO use async and await
+  getRandomUser = () => {
     API.search().then((res) => {
-      console.log(this.state.result);
-
-      this.setState({ result: this.state.result.concat(res.data) });
+      console.log(res.data.results);
+      this.setState({ result: this.state.result.concat(res.data.results) });
     });
   };
 
@@ -28,10 +30,11 @@ export class ResultsContainer extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    //! Filter results go here to send to API
+    //! Filter & sort results
   };
 
   render() {
+    // console.log(this.state);
     return (
       <div>
         <FilterSearch />

@@ -3,24 +3,37 @@ import React from "react";
 const EmployeeCard = (props) => {
   return (
     <div className="container">
-      <div className="row">
-        {props.results.map((result) => {
-          console.log(result.results[0].name.first);
-          <div className="col-sm-3">
-            <div className="card" style={{ width: "325px" }}>
+      {props.results.map((result) => {
+        console.log(result);
+        return (
+          <div className="row" key={result.email}>
+            <div className="col-sm-3" style={{ padding: "5px" }}>
               <img
-                src={result.results[0].picture.thumbnail}
-                className="card-img-top"
+                src={result.picture.large}
+                className=""
+                style={{ width: "95%" }}
               />
-              <div className="card-body">
-                <h3>{result.results[0].name.first}</h3>
-              </div>
             </div>
-          </div>;
-        })}
-      </div>
+            <div className="col-sm-8" style={{ padding: "5px" }}>
+              <h3>{result.name.first}</h3>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
+  // (
+  //   <>
+  //     {props.results.map((user) => {
+  //       console.log(user.results[0].name.first);
+  //       return (
+  //         <div className="container">
+  //           <h1>{user.results[0].name.first}</h1>
+  //         </div>
+  //       );
+  //     })}
+  //   </>
+  // );
 };
 
 export default EmployeeCard;
