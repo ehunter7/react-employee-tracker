@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../API";
-import EmployeeCard from "./EmployeeCard";
+import EmployeeCard from "./EmployeeCard.js";
 
 export class ResultsContainer extends Component {
   state = {
