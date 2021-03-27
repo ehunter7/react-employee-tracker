@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from "../API";
 import EmployeeCard from "./EmployeeCard";
-import FilterSearch from "./FilterSearch";
 
 export class ResultsContainer extends Component {
   state = {
@@ -10,16 +9,13 @@ export class ResultsContainer extends Component {
   };
 
   componentDidMount() {
-    // TODO find a better way to call API multiple times
-    // for (let i = 0; i < 10; i++) {
     this.getRandomUser();
-    // }
   }
 
   //TODO use async and await
   getRandomUser = () => {
     API.search().then((res) => {
-      console.log(res.data.results);
+      // console.log(res.data.results);
       this.setState({ result: this.state.result.concat(res.data.results) });
     });
   };
@@ -37,7 +33,6 @@ export class ResultsContainer extends Component {
     // console.log(this.state);
     return (
       <div>
-        <FilterSearch />
         <EmployeeCard results={this.state.result} />
       </div>
     );
