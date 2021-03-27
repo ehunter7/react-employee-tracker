@@ -3,10 +3,10 @@ import "./EmployeeCard.css";
 
 const FilterInput = (props) => {
   return (
-    <div className="container filter">
+    <div className="container  filter">
       <form>
         <div className="row title">
-          <div className="col-12" style={{ textAlign: "center" }}>
+          <div className="col-12 ">
             <h2>Filter</h2>
           </div>
         </div>
@@ -14,10 +14,12 @@ const FilterInput = (props) => {
           <div className="col-sm-4">
             <label for="country">Country</label>
             <input
-              type="checkbox"
+              type="text"
               id="country"
               name="country"
-              value="country"
+              placeholder="Enter a Country"
+              value={props.result}
+              onChange={props.handleInputChange}
             />
           </div>
 

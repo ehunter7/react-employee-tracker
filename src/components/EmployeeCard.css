@@ -1,9 +1,55 @@
+.App {
+    background-color: #000814;
+}
+
+.navText{
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
 .EmpCard {
-    background-color: blue;
+    color: antiquewhite;
+    background-color: #001d3d;
     border-radius: 5em 2em 2em 5em;
     margin: 1em;
-};
+}
+
+#search{
+    background-color: rgb(24, 26, 27);
+    border-color: rgb(60, 65, 68);
+}
+
+.EmpImage {
+    padding: 5px;
+    border-radius: 50%;
+}
 
 .filter {
+    background-color: #003566;
     text-align: center;
+    border: solid 1px white;
+    border-radius: 1em;
+    margin-top: 1em;
+    width: 80%;
+}
+
+#navBtn {
+    color: antiquewhite;
+    border: #ffc300 solid 1px;
+    margin-left: .25em;
+}
+
+#navBtn:hover {
+    background-color: #ffd60a;
+}
+
+#filterSearchBtn{
+    color: antiquewhite;
+    border: #ffc300 solid 1px;
+    width: 100%;
+    text-align: center;
+}
+
+#filterSearchBtn:hover {
+    background-color: #ffd60a;
 }

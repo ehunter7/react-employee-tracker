@@ -4,11 +4,7 @@ const IndividualCard = (props) => {
   return (
     <div className="row EmpCard">
       <div className="col-sm-3 ImgDiv" style={{ marginLeft: "10px" }}>
-        <img
-          src={props.image}
-          className="EmpImage"
-          style={{ padding: "5px", borderRadius: "50%" }}
-        />
+        <img src={props.image} className="EmpImage" />
       </div>
       <div className="col-sm-4 EmpName" style={{ marginTop: "2em" }}>
         <h3>
