@@ -1,4 +1,5 @@
 import React from "react";
+import IndividualCard from "./IndividualCard";
 
 const EmployeeCard = (props) => {
   return (
@@ -6,34 +7,22 @@ const EmployeeCard = (props) => {
       {props.results.map((result) => {
         console.log(result);
         return (
-          <div className="row" key={result.email}>
-            <div className="col-sm-3" style={{ padding: "5px" }}>
-              <img
-                src={result.picture.large}
-                className=""
-                style={{ width: "95%" }}
-              />
-            </div>
-            <div className="col-sm-8" style={{ padding: "5px" }}>
-              <h3>{result.name.first}</h3>
-            </div>
-          </div>
+          <IndividualCard
+            //? if i have a key here do i need one in the card as well
+            key={result.email}
+            image={result.picture.large}
+            firstName={result.name.first}
+            lastName={result.name.last}
+            username={result.login.username}
+            email={result.email}
+            state={result.location.state}
+            city={result.location.city}
+            country={result.location.country}
+          />
         );
       })}
     </div>
   );
-  // (
-  //   <>
-  //     {props.results.map((user) => {
-  //       console.log(user.results[0].name.first);
-  //       return (
-  //         <div className="container">
-  //           <h1>{user.results[0].name.first}</h1>
-  //         </div>
-  //       );
-  //     })}
-  //   </>
-  // );
 };
 
 export default EmployeeCard;
