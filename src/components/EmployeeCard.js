@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import IndividualCard from "./IndividualCard";
 
-const EmployeeCard = (props) => {
+const EmployeeCard = ({ results, filterCountry }) => {
+  const [currentUserArray, setArray] = useState([]);
+
+  useEffect(() => {
+    setArray(
+      results.filter((user) => {
+        console.log(filterCountry);
+        if (filterCountry !== "") {
+          return user.location.country.includes(filterCountry);
+        } else {
+          return user;
+        }
+      })
+    );
+  }, [filterCountry]);
+
   return (
     <div className="container">
-      {props.results.map((result) => {
+      {currentUserArray.map((result) => {
         // console.log(result);
+
         return (
           <IndividualCard
             //? if i have a key here do i need one in the card as well
