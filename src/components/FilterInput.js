@@ -1,7 +1,7 @@
 import React from "react";
 import "./EmployeeCard.css";
 
-const FilterInput = (props) => {
+const FilterInput = ({ handleInputChange, country, username, email }) => {
   return (
     <div className="container  filter">
       <form>
@@ -12,19 +12,46 @@ const FilterInput = (props) => {
         </div>
         <div className="row selction">
           <div className="col-sm-4">
-            <label for="country">Country</label>
+            <label for="country" className="filter-text">
+              Country
+            </label>
             <input
+              className="filter-input"
               type="text"
               id="country"
               name="country"
               placeholder="Enter a Country"
-              value={props.result}
-              onChange={props.handleInputChange}
+              value={country}
+              onChange={handleInputChange}
             />
           </div>
-
-          <div calssName="col-sm-4">
-            <button onClick={props.setState}>Close</button>
+          <div className="col-sm-4">
+            <label for="username" className="filter-text">
+              Username
+            </label>
+            <input
+              className="filter-input"
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter a username"
+              value={username}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="col-sm-4">
+            <label for="email" className="filter-text">
+              email
+            </label>
+            <input
+              className="filter-input"
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Enter a email"
+              value={email}
+              onChange={handleInputChange}
+            />
           </div>
         </div>
       </form>

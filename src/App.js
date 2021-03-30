@@ -12,9 +12,13 @@ function App() {
   const [filter, setFilter] = useState(false);
   const [sort, setSort] = useState(false);
   const [filterCountry, setCountry] = useState("");
+  const [filterUsername, setUsername] = useState("");
+  const [filterEmail, setEmail] = useState("");
+  const [first, setFirst] = useState(false);
+  const [last, setLast] = useState(false);
+  const [currentUserArray, setArray] = useState([]);
 
   useEffect(() => {
-    console.log("Lets Go!");
     getRandomUser();
   }, []);
 
@@ -24,10 +28,52 @@ function App() {
     });
   };
 
-  const handleInputChange = (event) => {
-    console.log(event.target.value);
-    setCountry(event.target.value);
+  const sortFirst = (a, b) => {
+    if (a.name.first > b.name.first) {
+      return 1;
+    } else if (b.name.first > a.name.first) {
+      return -1;
+    } else {
+      return 0;
+    }
   };
+
+  const sortLast = (a, b) => {
+    if (a.name.last > b.name.last) {
+      return 1;
+    } else if (b.name.last > a.name.last) {
+      return -1;
+    } else {
+      return 0;
+    }
+  };
+
+  const sortUsers = (event) => {
+    console.log(event.target.name);
+    if (event.target.name) {
+      setResult(result.sort(sortFirst));
+    } else {
+      setResult(result.sort(sortLast));
+    }
+  };
+
+  const handleInputChange = (event) => {
+    event.preventDefault();
+    if (event.target.name === "country") {
+      setCountry(event.target.value);
+    } else if (event.target.name === "username") {
+      setUsername(event.target.value);
+    } else if (event.target.name === "email") {
+      setEmail(event.target.value);
+    }
+  };
+
+  // useEffect(() => {
+  //   set;
+  //   return () => {
+  //     cleanup;
+  //   };
+  // }, [input]);
 
   return (
     <div className="App">
@@ -44,14 +90,29 @@ function App() {
 
         {filter ? (
           <FilterInput
-            setState={() => setFilter(false)}
             handleInputChange={handleInputChange}
-            result={filterCountry}
+            country={filterCountry}
+            username={filterUsername}
+            email={filterEmail}
           />
         ) : null}
-        {sort ? <SortInput setState={() => setSort(false)} /> : null}
+        {sort ? (
+          <SortInput
+            setState={() => setSort(false)}
+            sort={sortUsers}
+            first={first}
+            last={last}
+          />
+        ) : null}
 
-        <ResultsContainer result={result} country={filterCountry} />
+        <ResultsContainer
+          result={result}
+          country={filterCountry}
+          username={filterUsername}
+          email={filterEmail}
+          first={first}
+          last={last}
+        />
       </header>
     </div>
   );

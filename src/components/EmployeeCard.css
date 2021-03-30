@@ -1,6 +1,4 @@
-.App {
-    background-color: #000814;
-}
+
 
 .navText{
     font-weight: 700;
@@ -52,4 +50,12 @@
 
 #filterSearchBtn:hover {
     background-color: #ffd60a;
+}
+
+.filter-input {
+    margin-left: 1em;
+}
+
+.filter-text {
+    color: antiquewhite;
 }

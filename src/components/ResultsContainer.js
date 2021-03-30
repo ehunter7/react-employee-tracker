@@ -1,9 +1,23 @@
 import EmployeeCard from "./EmployeeCard";
 
-const ResultsContainer = ({ result, country }) => {
+const ResultsContainer = ({
+  result,
+  country,
+  username,
+  email,
+  first,
+  last,
+}) => {
   return (
     <div>
-      <EmployeeCard results={result} filterCountry={country} />
+      <EmployeeCard
+        results={result}
+        filterCountry={country}
+        filterUsername={username}
+        filterEmail={email}
+        first={first}
+        last={last}
+      />
     </div>
   );
 };
