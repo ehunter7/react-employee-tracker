@@ -48,13 +48,24 @@ function App() {
     }
   };
 
+  const sortByName = (myArray, sign) => {
+    console.log("in the mix!");
+    for (let i = 1; i < myArray.length; i++) {
+      let key = myArray[i];
+      let j = i - 1;
+
+      while (j >= 0 && myArray[j].name.first > key.name.first) {
+        myArray[j + 1] = myArray[j];
+        j--;
+      }
+      myArray[j + 1] = key;
+    }
+    return myArray;
+  };
+
   const sortUsers = (event) => {
     console.log(event.target.name);
-    if (event.target.name) {
-      setResult(result.sort(sortFirst));
-    } else {
-      setResult(result.sort(sortLast));
-    }
+    setArray(sortByName(result, event.target.name));
   };
 
   const handleInputChange = (event) => {

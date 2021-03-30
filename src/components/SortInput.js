@@ -11,8 +11,8 @@ const SortInput = ({ sort, first, last }) => {
       </div>
       <div className="row selction">
         <div className="col-sm-4">
-          <button name="first" onClick={sort}>
-            First
+          <button name="first" className="btn" id="sortBtn" onClick={sort}>
+            By First Name
           </button>
         </div>
         <div className="col-sm-4">

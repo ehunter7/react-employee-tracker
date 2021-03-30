@@ -59,3 +59,11 @@
 .filter-text {
     color: antiquewhite;
 }
+
+#sortBtn {
+    color: antiquewhite;
+
+    border: #ffc300 solid 1px;
+    
+    text-align: center;
+}
