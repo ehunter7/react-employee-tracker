@@ -20,7 +20,12 @@ function App() {
 
   useEffect(() => {
     getRandomUser();
+    setArray(result);
   }, []);
+
+  useEffect(() => {
+    setArray(result);
+  }, [result]);
 
   const getRandomUser = () => {
     API.search().then((res) => {
@@ -28,28 +33,7 @@ function App() {
     });
   };
 
-  const sortFirst = (a, b) => {
-    if (a.name.first > b.name.first) {
-      return 1;
-    } else if (b.name.first > a.name.first) {
-      return -1;
-    } else {
-      return 0;
-    }
-  };
-
-  const sortLast = (a, b) => {
-    if (a.name.last > b.name.last) {
-      return 1;
-    } else if (b.name.last > a.name.last) {
-      return -1;
-    } else {
-      return 0;
-    }
-  };
-
-  const sortByName = (myArray, sign) => {
-    console.log("in the mix!");
+  const sortByFirstName = (myArray, sign) => {
     for (let i = 1; i < myArray.length; i++) {
       let key = myArray[i];
       let j = i - 1;
@@ -63,9 +47,27 @@ function App() {
     return myArray;
   };
 
+  const sortByLastName = (myArray, sign) => {
+    for (let i = 1; i < myArray.length; i++) {
+      let key = myArray[i];
+      let j = i - 1;
+
+      while (j >= 0 && myArray[j].name.last > key.name.last) {
+        myArray[j + 1] = myArray[j];
+        j--;
+      }
+      myArray[j + 1] = key;
+    }
+    return myArray;
+  };
+
   const sortUsers = (event) => {
     console.log(event.target.name);
-    setArray(sortByName(result, event.target.name));
+    if (event.target.name === "first") {
+      setArray(sortByFirstName(result, event.target.name));
+    } else {
+      setArray(sortByLastName(result, event.target.name));
+    }
   };
 
   const handleInputChange = (event) => {
@@ -79,12 +81,41 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   set;
-  //   return () => {
-  //     cleanup;
-  //   };
-  // }, [input]);
+  useEffect(() => {
+    setArray(
+      result.filter((user) => {
+        if (filterCountry !== "") {
+          return user.location.country.includes(filterCountry);
+        } else {
+          return user;
+        }
+      })
+    );
+  }, [filterCountry]);
+
+  useEffect(() => {
+    setArray(
+      result.filter((user) => {
+        if (filterUsername !== "") {
+          return user.login.username.includes(filterUsername);
+        } else {
+          return user;
+        }
+      })
+    );
+  }, [filterUsername]);
+
+  useEffect(() => {
+    setArray(
+      result.filter((user) => {
+        if (filterEmail !== "") {
+          return user.email.includes(filterEmail);
+        } else {
+          return user;
+        }
+      })
+    );
+  }, [filterEmail]);
 
   return (
     <div className="App">
@@ -117,7 +148,7 @@ function App() {
         ) : null}
 
         <ResultsContainer
-          result={result}
+          result={currentUserArray}
           country={filterCountry}
           username={filterUsername}
           email={filterEmail}

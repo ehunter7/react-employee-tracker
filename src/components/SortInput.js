@@ -16,17 +16,9 @@ const SortInput = ({ sort, first, last }) => {
           </button>
         </div>
         <div className="col-sm-4">
-          <label for="last" className="filter-text">
-            Last Name
-          </label>
-          <input
-            className="filter-input"
-            type="checkbox"
-            id="username"
-            name="username"
-            placeholder="Enter a username"
-            value={last}
-          />
+          <button name="last" className="btn" id="sortBtn" onClick={sort}>
+            By Last Name
+          </button>
         </div>
       </div>
     </div>
