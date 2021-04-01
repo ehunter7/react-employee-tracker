@@ -3,7 +3,12 @@
 
   ## Description
     
-    User has the ability to see all employees in one place. Employees are displayed in a list format. List can be filtered by Country, Username, Email address. User can also sort the list by first and or last names. Use has the ability to seach for a single user by entering in the name they would like to find. 
+    User has the ability to see all employees in one place. 
+    Employees are displayed in a list format. List can be filtered 
+    by Country, Username, Email address. User can also sort the 
+    list by first and or last names. Use has the ability to seach 
+    for a single user by entering in the name they would like 
+    to find. 
     
   ## Table of Contents
 
