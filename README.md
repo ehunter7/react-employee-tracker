@@ -30,6 +30,9 @@
 
   ### Links
     
+    [gitHub page](https://ehunter7.github.io/react-employee-tracker/)
+
+    [gitHub repo](https://github.com/ehunter7/react-employee-tracker)
 
   ### Questions
     
