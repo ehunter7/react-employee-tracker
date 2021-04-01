@@ -1,7 +1,7 @@
 import React from "react";
 import "./EmployeeCard.css";
 
-const NavBar = () => {
+const NavBar = ({ handleInputChange }) => {
   return (
     <div>
       <nav className="navbar navbar-light ">
@@ -14,12 +14,14 @@ const NavBar = () => {
               className="form-control me-2 "
               id="search"
               type="search"
-              placeholder="Search"
+              name="name"
+              placeholder="Search for a Person"
               aria-label="Search"
+              onChange={handleInputChange}
             />
-            <button className="btn" id="navBtn" type="submit">
+            {/* <button className="btn" id="navBtn" type="submit">
               Search
-            </button>
+            </button> */}
           </form>
         </div>
       </nav>

@@ -17,10 +17,11 @@ function App() {
   const [first, setFirst] = useState(false);
   const [last, setLast] = useState(false);
   const [currentUserArray, setArray] = useState([]);
+  const [nameSearch, setNameSearch] = useState("");
 
   useEffect(() => {
     getRandomUser();
-    setArray(result);
+    // setArray(result);
   }, []);
 
   useEffect(() => {
@@ -33,7 +34,10 @@ function App() {
     });
   };
 
-  const sortByFirstName = (myArray, sign) => {
+  const sortByFirstName = (myArray) => {
+    console.log("Sorting first!");
+    console.log(myArray);
+
     for (let i = 1; i < myArray.length; i++) {
       let key = myArray[i];
       let j = i - 1;
@@ -44,10 +48,12 @@ function App() {
       }
       myArray[j + 1] = key;
     }
+
     return myArray;
   };
 
-  const sortByLastName = (myArray, sign) => {
+  const sortByLastName = (myArray) => {
+    console.log(myArray);
     for (let i = 1; i < myArray.length; i++) {
       let key = myArray[i];
       let j = i - 1;
@@ -62,15 +68,18 @@ function App() {
   };
 
   const sortUsers = (event) => {
+    event.preventDefault();
     console.log(event.target.name);
     if (event.target.name === "first") {
-      setArray(sortByFirstName(result, event.target.name));
+      setArray(sortByFirstName(result));
+      console.log("done sorting!");
     } else {
-      setArray(sortByLastName(result, event.target.name));
+      setArray(sortByLastName(result));
     }
   };
 
   const handleInputChange = (event) => {
+    console.log(event.target.name);
     event.preventDefault();
     if (event.target.name === "country") {
       setCountry(event.target.value);
@@ -78,8 +87,22 @@ function App() {
       setUsername(event.target.value);
     } else if (event.target.name === "email") {
       setEmail(event.target.value);
+    } else if (event.target.name === "name") {
+      setNameSearch(event.target.value);
     }
   };
+
+  useEffect(() => {
+    setArray(
+      result.filter((user) => {
+        if (nameSearch !== "") {
+          return user.name.first.includes(nameSearch);
+        } else {
+          return user;
+        }
+      })
+    );
+  }, [nameSearch]);
 
   useEffect(() => {
     setArray(
@@ -120,7 +143,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <NavBar />
+        <NavBar handleInputChange={handleInputChange} />
         <FilterSearch
           setFilter={() => {
             filter ? setFilter(false) : setFilter(true);
