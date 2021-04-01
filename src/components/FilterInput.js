@@ -6,7 +6,7 @@ const FilterInput = ({ handleInputChange, country, username, email }) => {
     <div className="container  filter">
       <form>
         <div className="row title">
-          <div className="col-12 ">
+          <div className="col-12 text-light">
             <h2>Filter</h2>
           </div>
         </div>
@@ -19,6 +19,7 @@ const FilterInput = ({ handleInputChange, country, username, email }) => {
               className="filter-input"
               type="text"
               id="country"
+              id="search"
               name="country"
               placeholder="Enter a Country"
               value={country}
@@ -33,6 +34,7 @@ const FilterInput = ({ handleInputChange, country, username, email }) => {
               className="filter-input"
               type="text"
               id="username"
+              id="search"
               name="username"
               placeholder="Enter a username"
               value={username}
@@ -40,13 +42,14 @@ const FilterInput = ({ handleInputChange, country, username, email }) => {
             />
           </div>
           <div className="col-sm-4">
-            <label for="email" className="filter-text">
+            <label for="email" className="filter-text ">
               email
             </label>
             <input
               className="filter-input"
               type="text"
               id="email"
+              id="search"
               name="email"
               placeholder="Enter a email"
               value={email}

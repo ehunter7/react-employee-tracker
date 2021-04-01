@@ -19,6 +19,10 @@
     
   ### Screenshots
 
+![react_employee_1](https://user-images.githubusercontent.com/73093272/113242704-79a35980-9266-11eb-90fe-fec15d84c5af.jpg)
+
+![react_employee_2](https://user-images.githubusercontent.com/73093272/113242710-7c9e4a00-9266-11eb-9a7d-79780f06e56f.jpg)
+
   ### Links
     
 

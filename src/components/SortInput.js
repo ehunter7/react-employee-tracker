@@ -5,7 +5,7 @@ const SortInput = ({ sort, first, last }) => {
   return (
     <div className="container  filter">
       <div className="row title">
-        <div className="col-12 ">
+        <div className="col-12 text-light">
           <h2>Sort Alphabetically</h2>
         </div>
       </div>
